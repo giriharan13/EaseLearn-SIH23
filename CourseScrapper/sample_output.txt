@@ -1,0 +1,53 @@
+Great Learning Courses:
+Title:Python Programming in Hindi,Rating:4.54
+Title:Python Projects,Rating:4.4
+Title:Python Projects,Rating:4.24
+Title:Python for Data Science,Rating:4.43
+Title:Python for Non-Programmers,Rating:4.47
+Coursera Courses:
+Title:Python for Everybody,Rating:4.8
+Title:Crash Course on Python,Rating:4.8
+Title:Python for Data Science, AI & Development,Rating:4.6
+Title:Google IT Automation with Python,Rating:4.7
+Title:Python 3 Programming,Rating:4.7
+Title:IBM Data Science,Rating:4.6
+Title:Python Basics,Rating:4.8
+Title:Get Started with Python,Rating:4.8
+Title:Data Analysis with Python,Rating:4.7
+Title:Learn to Program: The Fundamentals,Rating:4.7
+Title:Applied Data Science with Python,Rating:4.5
+Title:Google Advanced Data Analytics,Rating:4.7
+Class Central Courses:
+Title:An Introduction to Interactive Programming in Python (Part 1),Rating:5.0
+Title:Using Databases with Python,Rating:4.5
+Title:Python for Everybody - Exploring Information,Rating:5.0
+Title:Python for Everybody,Rating:5.0
+Title:Python and Statistics for Financial Analysis,Rating:4.5
+Title:Computing in Python II: Control Structures,Rating:5.0
+Title:Computing in Python I: Fundamentals and Procedural Programming,Rating:5.0
+Title:An Introduction to Interactive Programming in Python (Part 2),Rating:5.0
+Title:Computing in Python IV: Objects & Algorithms,Rating:5.0
+Title:Computing in Python III: Data Structures,Rating:5.0
+Title:Python for Beginners: Complete Python Programming,Rating:0.0
+Title:Formation Complète Python 2023 - de 0 à Expert,Rating:0.0
+Udemy Courses:
+Title:100 Days of Code: The Complete Python Pro Bootcamp for 2023,Rating:4.6900787
+Title:The Complete Python Bootcamp From Zero to Hero in Python,Rating:4.5687504
+Title:Complete Python Developer in 2023: Zero to Mastery,Rating:4.59443
+Title:Learn Python Programming - Beginner to Master,Rating:4.592957
+Title:Python Mega Course: Learn Python in 60 Days, Build 20 Apps,Rating:4.614606
+Title:Python for Absolute Beginners,Rating:4.482337
+Title:Learn Python Programming Masterclass,Rating:4.596321
+Title:Python for beginners,Rating:4.474055
+Title:The Complete Python Course | Learn Python by Doing in 2023,Rating:4.5560846
+Title:Python for Data Science and Machine Learning Bootcamp,Rating:4.5648994
+Title:Complete Python Bootcamp For Everyone From Zero to Hero 2023,Rating:4.572164
+Title:Python 3: Fundamentals,Rating:4.7633553
+Title:The Modern Python 3 Bootcamp,Rating:4.7177444
+Title:Python Complete Masterclass for Beginners,Rating:4.5727882
+Title:Learn Complete Python In Simple Way,Rating:4.635042
+Title:Total Python: You Can Learn Python Programming in 16 Days,Rating:4.541259
+Title:Python PCEP: Become Certified Entry-Level Python Programmer,Rating:4.6416836
+Title:Automate the Boring Stuff with Python Programming,Rating:4.593217
+Title:Automate Everything with Python,Rating:4.5194573
+Title:Python 3: Deep Dive (Part 1 - Functional),Rating:4.832527
