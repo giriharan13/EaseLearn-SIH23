@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+margin:0;}
+section{
+position:relative;
+width=100%;
+min-height:100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content:flex-start;
+background:url(bgbg.jpg);
+background-size:cover;
+background-position:center;
+
+
+}
+header{
+position=relative;
+top:0;
+width=100%;
+padding=100px;
+margin:10;
+display :flex;
+justify-content:space-between ;
+align-items:center;
+}
+header .logo{
+position:relative;
+color:white ;
+font-size:50px;
+text-decoration:none ;
+text-tranform:uppercase ;
+font-weight:800;
+letter-spacing:1px;
+}
+header .navigation a{
+top:2;
+right:2;
+color:#000;
+background:#fff;
+text-decoration:none ;
+text-tranform:uppercase ;
+padding : 2px 15px;
+letter-spacing:1px;
+border-radius:20px;
+margin-left: 100px; /* Add margin to separate the logo and login */
+
+}
+.content{
+max-width:850px;
+margin:60px 200px;
+}
+.content .info h2{
+color:	white;
+font-size:30px;
+text-tranform:uppercase ;
+font-weight:800;
+letter-spacing:2px;
+
+ }
+ .content .info p {
+ font-size:16px;
+ font-weight:500;
+ margin-bottom:40px;
+ color:white;}
