@@ -88,7 +88,3 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
             #time.sleep(10)
         return websites_with_rating
         #print(len(links))
-
-if __name__ == '__main__':
-    scraper = WebsiteScrater()
-    scraper.get_results()

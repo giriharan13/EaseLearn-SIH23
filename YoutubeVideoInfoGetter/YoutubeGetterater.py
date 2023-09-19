@@ -102,7 +102,3 @@ class YoutubeVideoInfoGetterater:  # Getter + Rater -> Getterater ;) ok i'll sto
             print(f"  Title: {title}")
             print(f"  Published At: {published_at}")
             print(f"  Rating: {rating}\n")
-
-yt = YoutubeVideoInfoGetterater("Hibernate java")
-res = yt.get_results()
-yt.print_results(res)

@@ -1,0 +1,24 @@
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urlencode
+
+class CourseScraper:
+    
+    def __init__(self,topic):
+        self.topic = topic
+
+    def reset_topic(self,topic):
+        self.topic = topic
+    
+    def scrape_coursera(self):
+        params = {
+        "query": self.topic.replace(" ","%20") # %20 for space
+        }
+        url = "https://www.coursera.org/search?"+urlencode(params)
+        req = requests.get(url)
+        soup = BeautifulSoup(req.text,"lxml")
+        print(soup.find_all("li cds-9 css-0 cds-11 cds-grid-item cds-56 cds-64 cds-76"))
+
+
+cs = CourseScraper("java")
+cs.scrape_coursera()

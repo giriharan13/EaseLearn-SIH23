@@ -2,7 +2,7 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 import json
 from urllib.parse import urlencode
-
+import sys,os
 
 class CourseraScraper(scrapy.Spider):
     name = "Coursera_scaper"
@@ -48,23 +48,36 @@ class CourseraScraper(scrapy.Spider):
         print("Coursera Results")
         for course in data:
             print("Title:",course.css("h3.cds-119.cds-CommonCard-title.css-e7lgfl.cds-121::text").get(),",Rating:",
-                                      course.css("p.cds-119.css-11uuo4b.cds-121::text").get())
+                                      course.css("p.cds-119.css-11uuo4b.cds-121::text").get(),"URL":course.css("a."))
+            
+    def get_results(self,data):
+        results = {}
+        for ind,course in enumerate(data,len(data)):
+            results[f"c{ind}"]={"Title":course.css("h3.cds-119.cds-CommonCard-title.css-e7lgfl.cds-121::text").get(),
+                                "Rating":course.css("p.cds-119.css-11uuo4b.cds-121::text").get()}
+        return results
+
     
     
-    def write_to_file(self,data):
-        file = open("C:\\Users\\raghu\\Documents\\testing\\CourseScrapper\\sample_output.txt","a")
-        file.write("Coursera Courses:\n")
-        for course in data:
-            file.write("Title:"+str(course.css("h3.cds-119.cds-CommonCard-title.css-e7lgfl.cds-121::text").get())+",Rating:"+str(course.css("p.cds-119.css-11uuo4b.cds-121::text").get())+"\n")
+    def write_to_json_file(self,data):
+        f = open(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))+"\\FlaskApp\\courseDetails.json","r")
+        jf = json.load(f)
+        f.close()
+        jf["CourseraResults"] = []
+        [jf["CourseraResults"].append(data[course]) for course in data]
+        f = open(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))+"\\FlaskApp\\courseDetails.json","w")
+        json.dump(jf,f,indent=2)
+        f.close() 
+        print("done")
 
 
     def parse(self,response):
         data = response.css("li.cds-9.css-0.cds-11.cds-grid-item.cds-56.cds-64.cds-76")
-        self.print_results(data)
-        self.write_to_file(data)
-        
+        #self.print_results(data)
+        #self.write_to_file(data)
+        results_json = self.get_results(data)
+        self.write_to_json_file(results_json)
+        yield results_json
 
-def startProcess():
-    process = CrawlerProcess()
-    process.crawl(CourseraScraper)
-    process.start()
+
+        

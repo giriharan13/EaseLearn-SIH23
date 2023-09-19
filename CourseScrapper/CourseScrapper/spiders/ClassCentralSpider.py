@@ -2,7 +2,7 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 import json
 from urllib.parse import urlencode
-
+import os
 
 class ClassCentralScraper(scrapy.Spider):
     name = "ClassCentral_scraper"
@@ -54,23 +54,30 @@ class ClassCentralScraper(scrapy.Spider):
         print("Class Central results")
         for course in data:
             print("Title:",course.css("h2.text-1.weight-semi.line-tight.margin-bottom-xxsmall::text").get(),",Rating:",self.ratingCalc(course))
+    
+    def get_results(self,data):
+        results = {}
+        for ind,course in enumerate(data,len(data)):
+            results[f"cc{ind}"] = {"Title":course.css("h2.text-1.weight-semi.line-tight.margin-bottom-xxsmall::text").get(),
+                                  "Rating":self.ratingCalc(course)}
+        return results
+
 
         
     def parse(self,response):
         print(len(response.css("li.bg-white.border-all.border-gray-light.padding-xsmall.radius-small.margin-bottom-small.medium-up-padding-horz-large.medium-up-padding-vert-medium.relative")))
-        self.print_results(response.css("li.bg-white.border-all.border-gray-light.padding-xsmall.radius-small.margin-bottom-small.medium-up-padding-horz-large.medium-up-padding-vert-medium.course-list-course"))
-        self.write_to_file(response.css("li.bg-white.border-all.border-gray-light.padding-xsmall.radius-small.margin-bottom-small.medium-up-padding-horz-large.medium-up-padding-vert-medium.course-list-course"))
+        results = self.get_results(response.css("li.bg-white.border-all.border-gray-light.padding-xsmall.radius-small.margin-bottom-small.medium-up-padding-horz-large.medium-up-padding-vert-medium.course-list-course"))
+        self.write_to_json_file(results)
         
-    def write_to_file(self,data):
-        file = open("C:\\Users\\raghu\\Documents\\testing\\CourseScrapper\\sample_output.txt","a")
-        file.write("Class Central Courses:\n")
-        for course in data:
-            file.write("Title:"+str(course.css("h2.text-1.weight-semi.line-tight.margin-bottom-xxsmall::text").get())+",Rating:"+str(self.ratingCalc(course))+"\n")
+    def write_to_json_file(self,data):
+        f = open(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))+"\\FlaskApp\\courseDetails.json","r")
+        jf = json.load(f)
+        f.close()
+        jf["ClassCentralResults"] = []
+        [jf["ClassCentralResults"].append(data[course]) for course in data]
+        f = open(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))+"\\FlaskApp\\courseDetails.json","w")
+        json.dump(jf,f,indent=2)
+        f.close()
+        print("done")
+            #file.write("Title:"+str(course.css("h2.text-1.weight-semi.line-tight.margin-bottom-xxsmall::text").get())+",Rating:"+str(self.ratingCalc(course))+"\n")
 
-
-
-
-def startProcess():
-    process = CrawlerProcess()
-    process.crawl(ClassCentralScraper)
-    process.start()
