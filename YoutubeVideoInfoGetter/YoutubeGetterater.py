@@ -1,8 +1,12 @@
 from googleapiclient.discovery import build
 import numpy as np
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class YoutubeVideoInfoGetterater:  # Getter + Rater -> Getterater ;) ok i'll stop
-    api_key = 'AIzaSyCoE-1aUD_oiUfuK4nvPJg_bJCeoYf79r8'  # Set up the YouTube Data API client
+    api_key = os.get_env("API_KEY")  # Set up the YouTube Data API client
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     #Make sure to pass the topic during instantiation
