@@ -1,34 +1,16 @@
-<!Doctype html>
-<html>
-<head>
- <title>Home Page</title>
-<link rel="stylesheet" href= "static/styles.css">
-</head>
-<body>
-<section>
-    <header>
-        <h2><a href="#" class="logo" >EASELEARN</a></h2>
-        <div class="navigation">
-            <a href="{{ url_for('login') }}">LOGIN</a>
-            <a href="{{ url_for('register') }}">SIGN-IN</a>
-
-        </div>
-    </header>
+{% extends "template.html" %}
+{% block content %}
     <div class="content">
         <div class="info">
             <h2>Discover, Connect, Thrive<br><span>Ultimate Learning Journey!</span></h2>
             <p>At EaseLearn, we believe that every student deserves a personalized and transformative learning experience.Whether you're seeking guidance in a specific subject or looking for the best content to fuel your learning journey, we're here to help you unlock your full potential. Join us today and embark on an educational adventure like no other, where the pursuit of knowledge knows no bounds.</p>
-
-        </div>
-        <div class="media-icons">
-            <a><i class="fa-brands fa-facebook"></i></a>
-            <a><i class="fa-brands fa-instagram"></i></a>
-            <a><i class="fa-brands fa-snapchat"></i></a>
         </div>
 
-    </div>
-</section>
-
-</body>
-
-</html>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <h2>Search here for a topic</h1>
+            {{ form.user_input }}
+            {{ form.search_type }}
+            {{ form.submit }}
+        </form>
+{% endblock content %}

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class YoutubeVideoInfoGetterater:  # Getter + Rater -> Getterater ;) ok i'll stop
-    api_key = os.get_env("API_KEY")  # Set up the YouTube Data API client
+    api_key = os.getenv("API_KEY")  # Set up the YouTube Data API client
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     #Make sure to pass the topic during instantiation
@@ -60,8 +60,8 @@ class YoutubeVideoInfoGetterater:  # Getter + Rater -> Getterater ;) ok i'll sto
 
                 view_count = int(video_stats['items'][0]['statistics']['viewCount'])
                 like_count = int(video_stats['items'][0]['statistics']['likeCount'])
-                comment_count = int(video_stats['items'][0]['statistics']['commentCount'])
-
+              #  comment_count = int(video_stats['items'][0]['statistics']['commentCount'])
+                comment_count = 0
                 # Calculate the ratio of views to likes, you can use any ratio logic you prefer
                 ratio = view_count / (like_count + 1)  # Add 1 to prevent division by zero
 

@@ -48,7 +48,7 @@ class CourseraScraper(scrapy.Spider):
         print("Coursera Results")
         for course in data:
             print("Title:",course.css("h3.cds-119.cds-CommonCard-title.css-e7lgfl.cds-121::text").get(),",Rating:",
-                                      course.css("p.cds-119.css-11uuo4b.cds-121::text").get(),"URL":course.css("a."))
+                                      course.css("p.cds-119.css-11uuo4b.cds-121::text").get(),"URL",course.css("a."))
             
     def get_results(self,data):
         results = {}

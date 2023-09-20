@@ -15,6 +15,7 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
     #Make sure you pass the topic during instantiation
     def __init__(self,topic):
         self.topic = topic
+        print(self.API_KEY,self.ID)
 
     #This function can be used to reset the topic
     def reset_topic(self,topic):
@@ -23,8 +24,9 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
     #This function takes a website's content and rates it on a scale of 1-5 using prompt engineering 
     def rate_content(self,content,topic,link):
         openai.api_key = os.getenv("OPENAI_API")
-        prompt = f'''Topic:{topic} .On a scale of 1 to 5, rate the website's content. Deduct points for websites that primarily promote a course on the topic rather than providing informative content about the subject matter.You should only say the rating and nothing else[important]-> '''+content[:18000]
+        prompt = f'''Topic:{topic} .On a scale of 1 to 5, rate the website's content. Deduct points for websites that primarily promote a course on the topic rather than providing informative content about the subject matter(note that if it provides some content then it's okay).You should only say the rating(in integer) and nothing else[important]-> '''+content[:15000]
         try:
+            #return 5   # adding this to reduce the credit usage for now
             response = openai.ChatCompletion.create(
                 model = "gpt-3.5-turbo",
                 messages = [ {"role":"user","content":prompt}]
@@ -37,11 +39,11 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
     
     #This function extracts the only the text content from a website 
     def extract_content(self,data):
-        tags = data.find_all(['p','h1','h2','h3','h4','h5','h6','li'])
+        tags = data.find_all(['p','h1','h2','h3','h4','h5','h6','li','span'])
         content = ""
         for tag in tags:
             content+=tag.get_text().strip()
-        print(len(content))
+        #print(len(content))
         return content
     
     #This function extracts the soups for all the website links provided
@@ -68,6 +70,7 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
         response = requests.get(url, params=params)
         result=response.json()
         links = []
+        #print(result)
         for item in result['items']:
             links.append(item.get('link', ''))
         return links
@@ -80,11 +83,16 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
         soups = self.extract_soups(links=links)
         contents = [self.extract_content(soup) for soup in soups]
         websites_with_rating = []
-        for i in range(5):
+        for i in range(len(contents)):
             response = self.rate_content(contents[i],self.query,links[i])
-            rating = None if type(response)==str else response["choices"][0]["message"]["content"]
-            print(links[i],rating)
+            rating = 3 if type(response)==str or type(response)==int else int(response["choices"][0]["message"]["content"])
+            #print(links[i],rating,response)
             websites_with_rating.append([links[i],rating])
-            #time.sleep(10)
-        return websites_with_rating
+            time.sleep(5)
+        ratings_json = {"data":websites_with_rating}
+        return ratings_json
         #print(len(links))
+
+if __name__=='__main__':
+    ws = WebsiteScrater("python")
+    print(ws.get_results())

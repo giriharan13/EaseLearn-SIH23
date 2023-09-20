@@ -1,0 +1,30 @@
+<!Doctype html>
+<html>
+<head>
+ <title>Home Page</title>
+<link rel="stylesheet" href= "static/styles.css">
+</head>
+<body>
+<section>
+    <header>
+        <h2><a href="#" class="logo" >EASELEARN</a></h2>
+        <div class="navigation">
+            <a href="{{ url_for('login') }}">LOGIN</a>
+            <a href="{{ url_for('register') }}">SIGN-IN</a>
+        </div>
+    </header>
+    {% block content %} {% endblock %}
+        <div class="media-icons">
+            <a><i class="fa-brands fa-facebook"></i></a>
+            <a><i class="fa-brands fa-instagram"></i></a>
+            <a><i class="fa-brands fa-snapchat"></i></a>
+        </div>
+
+
+
+    </div>
+</section>
+
+</body>
+
+</html>

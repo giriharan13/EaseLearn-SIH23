@@ -2,13 +2,19 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    text-decoration: none;
+    box-sizing:border-box;
+    margin: 0px;
 }
 
 body{
-margin:0;}
+margin:0;
+display: flex;
+flex-direction: column;
+}
 section{
 position:relative;
-width=100%;
+width:100%;
 min-height:100vh;
 display: flex;
 flex-direction: column;
@@ -21,10 +27,10 @@ background-position:center;
 
 }
 header{
-position=relative;
+position:relative;
 top:0;
-width=100%;
-padding=100px;
+width:100%;
+padding:100px;
 margin:10;
 display :flex;
 justify-content:space-between ;
@@ -35,7 +41,7 @@ position:relative;
 color:white ;
 font-size:50px;
 text-decoration:none ;
-text-tranform:uppercase ;
+text-transform:uppercase ;
 font-weight:800;
 letter-spacing:1px;
 }
@@ -45,7 +51,7 @@ right:2;
 color:#000;
 background:#fff;
 text-decoration:none ;
-text-tranform:uppercase ;
+text-transform:uppercase ;
 padding : 2px 15px;
 letter-spacing:1px;
 border-radius:20px;
@@ -53,13 +59,38 @@ margin-left: 100px; /* Add margin to separate the logo and login */
 
 }
 .content{
-max-width:850px;
+max-width:1150px;
 margin:60px 200px;
 }
+
+.website-content{
+    max-width:850px;
+    margin:60px 200px;
+    background-color:rgba(255,255,255,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    border-radius: 10px;
+    flex-wrap:wrap;
+
+}
+.star
+{
+background-color:#dfb200;
+height:8.500001907348633px;
+width:8.999999046325684px;
+padding:0px;
+border-style:hidden;
+outline:none;
+margin:5px;
+}
+
 .content .info h2{
 color:	white;
 font-size:30px;
-text-tranform:uppercase ;
+text-transform:uppercase ;
 font-weight:800;
 letter-spacing:2px;
 
@@ -69,3 +100,41 @@ letter-spacing:2px;
  font-weight:500;
  margin-bottom:40px;
  color:white;}
+
+ .rating{
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 10px;
+ }
+
+ .links-and-ratings{
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+
+ }
+
+
+.result-content
+{
+   display: flex;
+   flex-direction:row;
+   flex-wrap:wrap;
+   justify-content:center;
+   align-items:center;
+   width: 80%;
+   padding:20px ;
+   background-color:rgba(255,255,255,0.5);
+   border-radius: 10px;
+}
+
+.video
+{
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

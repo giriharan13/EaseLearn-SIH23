@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block content %}
+        <div class="navigation">
+            <a href="{{ url_for('home') }}">Go Back</a>
+        </div>
+        <div class="website-content">
+            {% for website in websites["data"] %}
+            <div class="links-and-ratings">
+                 <a href="{{website[0]}}">{{ website[0] }}</a>
+                 <div class="rating">
+                {% if star==None %}
+                   <div>NAN</div>
+                {% else %}
+                 {% for star in range(website[1]) %}
+                 <div class="star"></div>
+                 {% endfor %}
+                 </div>
+                  {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}

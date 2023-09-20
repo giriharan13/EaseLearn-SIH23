@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="navigation">
+    <a href="{{ url_for('home') }}">Go Back</a>
+</div>
+<div class="website-content">
+    {% for course in course_res["courses"] %}
+    <div class="links-and-ratings">
+         <a href="{{course["url"]}}">{{ course["title"] }}</a>
+         <div class="rating">
+         {% for star in range((course["rating"])|int) %}
+         <div class="star"></div>
+         {% endfor %}
+         </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

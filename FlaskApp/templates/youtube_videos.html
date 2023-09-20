@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content  %}
+<div class="navigation">
+    <a href="{{ url_for('home') }}">Go Back</a>
+</div>
+<div class="result-content">
+{% for res in range(10) %}
+<div class="video">
+<iframe width="263" height="150" src={{ "https://www.youtube.com/embed/"+youtube_res[res][0][0] }} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>Rating: {{youtube_res[res][1]}}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock  %}
