@@ -33,7 +33,8 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
             )
             #print("link:"+link)
             #print(response)
-        except:
+        except Exception as e:
+            print(e)
             return "Limit Exceeded"
         return response
     
@@ -83,12 +84,12 @@ class WebsiteScrater:                     #Sraper+Rater=Srater :)
         soups = self.extract_soups(links=links)
         contents = [self.extract_content(soup) for soup in soups]
         websites_with_rating = []
-        for i in range(len(contents)):
+        for i in range(3):
             response = self.rate_content(contents[i],self.query,links[i])
             rating = 3 if type(response)==str or type(response)==int else int(response["choices"][0]["message"]["content"])
             #print(links[i],rating,response)
             websites_with_rating.append([links[i],rating])
-            time.sleep(5)
+            #time.sleep(5)
         ratings_json = {"data":websites_with_rating}
         return ratings_json
         #print(len(links))

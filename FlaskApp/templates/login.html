@@ -7,20 +7,17 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form method="POST" action="{{ url_for('login') }}">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
             <label for="user_type">Select user type:</label>
-            <select name="user_type" id="user_type">
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-            </select>
-
+            {{ form.user_type(id="user_type") }}
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            {{ form.user_name }}
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            {{ form.password }}
 
-            <input type="submit" value="Login">
+            {{form.submit }}
         </form>
     </div>
 </body>

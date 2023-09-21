@@ -138,3 +138,63 @@ letter-spacing:2px;
     justify-content: center;
     align-items: center;
 }
+
+.search-bar{
+            margin: 55px;
+            padding: 25px;
+            top:100px;
+
+        }
+        #submit-search{
+            background-color: #008000; /* Green */
+            border: none;
+            color:white;
+            padding: 10px;
+            border-radius: 10%;
+            cursor: pointer;
+        }
+        #submit-search button:hover{
+            color:white;
+            border-radius: 10%;
+            background-color: #006400;
+        }
+        .teacher-profiles {
+            flex: 2;
+            padding: 20px;
+            background-color:peachpuff; 
+            display: flex;
+            width:250%;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .teacher-profile{
+            width:100vw;
+            margin-bottom: 20px;
+            padding: 20px; 
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            max-width:450px;
+            
+        }
+        .teacher-profile img {
+            max-width: 100%;
+            height: auto;
+        }
+        .teacher-filters button {
+            background-color: #008000; /* Green */
+            border: none;
+            color:white;
+            padding: 10px;
+            border-radius: 10%;
+            cursor: pointer;
+        }
+        .teacher-filters button:hover {
+            color:white;
+            border-radius: 10%;
+            background-color: #006400; /* Darker Green on Hover */
+        }
+        

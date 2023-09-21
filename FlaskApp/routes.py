@@ -10,17 +10,13 @@ from CourseScraper.TempCourseScraper import CourseScraper
 from YoutubeVideoInfoGetter.YoutubeGetterater import YoutubeVideoInfoGetterater
 from WebsiteScrater.WebsiteScrater import WebsiteScrater
 
-from FlaskApp import app
-from flask import render_template,redirect,url_for,request
+from FlaskApp import app,login_manager
+from flask import render_template,redirect,url_for,request,flash
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
-from FlaskApp.forms import SearchForm
-import random
-random_hex = ''.join(random.choice('0123456789ABCDEF') for _ in range(12))
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Note the correct URI format
-app.config["SECRET_KEY"] =random_hex
-#db=SQLAlchemy(app)
+from flask_login import UserMixin,current_user,login_required
+from FlaskApp.forms import SearchForm,LoginForm
+from FlaskApp.models import Teacher,Student
+from FlaskApp import app
 
 
   
@@ -66,13 +62,52 @@ def courses():
     return render_template('courses.html',course_res=course_res)
 
 
-@app.route('/login')
+@app.route('/login',methods=["POST","GET"])
 def login():
-    return render_template('login.html')
+    if current_user.is_authenticated:
+        return redirect(url_for("hub"))
+    form = LoginForm()
+    if(form.validate_on_submit()):
+        if(request.form.get("user_type")=="Student"):
+            student = Student.query.filter_by(user_name=form.user_name.data).first()
+            print("hello")
+            if (student and student.password==form.password.data):
+                login_user(student.id,0)
+                flash(f"green : Successfully logged in as {student.user_name}")
+                return redirect(url_for("hub", form=form))
+            else:
+                print("failed")
+                flash("red : Doesnt exist or Invalid password")
+        elif(request.form.get("user_type")=="Teacher"):
+            teacher = Teacher.query.filter_by(user_name=form.user_name.data).first()
+            print("hello")
+            if (teacher and teacher.password==form.password.data):
+                login_user(teacher.id,1)
+                flash(f"green : Successfully logged in as {teacher.user_name}")
+                return redirect(url_for("hub", form=form))
+            else:
+                print("failed")
+                flash("red : Doesnt exist or Invalid password")
+    return render_template("login.html",title="login",form=form)
+
+@login_manager.user_loader
+def login_user(u_id,user_type):
+    if(user_type==0):
+        return Student.query.filter_by(id=u_id).first()
+    else:
+        return Teacher.query.filter_by(id=u_id).first()
+
+
 
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+@login_required
+@app.route('/hub')
+def hub():
+    teachers = Teacher.query.all()
+    return render_template("hub.html",teachers=teachers)
 
 @app.route('/student')
 def student():

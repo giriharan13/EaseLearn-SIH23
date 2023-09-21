@@ -1,0 +1,74 @@
+.container{
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        body{
+            background-size: contain;
+            height: 500px;
+            background:url(bgbg.jpg);
+        }
+        input{
+            padding:7px ;
+            border-radius: 10px;
+            border: 0px;
+        }
+        button{
+            color:black;
+            background-color: aliceblue;
+            text-decoration-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 7px;
+            border-radius: 10px;
+            border: 0px solid black;
+            max-width: 80px;
+        }
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .logo{
+            position:relative;
+            color:white ;
+            font-size:50px;
+            text-decoration:none ;
+            text-transform:uppercase ;
+            font-weight:800;
+            letter-spacing:1px;
+            }
+
+            select{
+                
+            color:black;
+            background-color: aliceblue;
+            text-decoration-color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 7px;
+            border-radius: 10px;
+            border: 0px solid black;
+            }
+
+            .teacher-profiles{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(255,255,255,0.5);
+                border-radius: 10px;
+
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .teacher-profile{
+                background-color:white;
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                margin: 20px;
+                border-radius: 10px;
+            }
+        
+        
+        
+
